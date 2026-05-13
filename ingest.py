@@ -18,7 +18,7 @@ def build_index():
     recursive_splitter = RecursiveCharacterTextSplitter(chunk_size=300, chunk_overlap=50, separators=["\n\n", "\n", " ", "", ".",",", ";"])
     recursive_tokens = recursive_splitter.split_documents(docs)
 
-    hf_embeddings = HuggingFaceEmbeddings("sentence-transformers/all-MiniLM-L6-v2")
+    hf_embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
     faiss_index = FAISS.from_documents(documents = recursive_tokens, embedding=hf_embeddings)
 
     faiss_index.save_local("faiss_index")
