@@ -13,3 +13,4 @@ google-search-results
 youtube-search
 youtube-transcript-api
 bm25
+sentence-transformers
