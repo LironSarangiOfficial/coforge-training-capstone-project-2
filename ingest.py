@@ -15,7 +15,7 @@ def build_index():
 	loader = CSVLoader(file_path='./data/train.csv')
 	docs = loader.load()
 
-	recursive_splitter = RecursiveCharacterTextSplitter(chunk_size=300, chunk_overlap=50, separators=["\n\n", "\n", " ", "", ".",",", ";"]))
+	recursive_splitter = RecursiveCharacterTextSplitter(chunk_size=300, chunk_overlap=50, separators=["\n\n", "\n", " ", "", ".",",", ";"])
 	recursive_tokens = recursive_splitter.split_documents(docs)
 
 	hf_embeddigns = HuggingFaceEmbeddings("sentence-trasnformers/all-MiniLM-L6-v2")
@@ -23,7 +23,7 @@ def build_index():
 
 	faiss_index.save_local("faiss_index")
 
-        print("FAISS faiss_index created successfully!")
+    print("FAISS faiss_index created successfully!")
 
 if __name__ == "__main__":
 	build_index()
